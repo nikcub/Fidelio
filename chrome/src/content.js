@@ -2,7 +2,7 @@
  Force-SSL
 
  Copyright 2010 	Nik Cubrilovic <nikcub@gmail.com>
-					http://nikcub.appspot.com/
+			http://nikcub.appspot.com/
 
  BSD licensed.
 
@@ -23,7 +23,7 @@
 			}
 			
 			if((this.sites.indexOf(document.domain) > 0) && document.location.protocol != 'https:') {
-				document.location = 'https://' + document.location.hostname + document.location.pathname;
+				document.location = 'https://' + document.location.hostname + document.location.pathname + document.location.hash;
 			}
 		},
 
