@@ -1,0 +1,21 @@
+{
+	"name": "Force-SSL",
+	"version": "0.0.1",
+	"description": "Secure web browsing (forces SSL for Facebook and Twitter).",
+	"options_page": "options.html",
+	"permissions": ["http://*/*", "https://*/*"],
+	"update_url": "http://nikcub.appspot.com/projects/force-ssl/updates.xml",
+	"content_scripts": [
+		{
+			"all_frames": true,
+			"js": [ "content.js" ],
+			"matches": [ "http://*/*", "https://*/*" ],
+			"run_at": "document_start"
+		}
+	],
+	"icons" : {
+		"19" : "img/forcessl-19.png",
+		"48" : "img/forcessl-48.png",
+		"128" : "img/forcessl-128.png"
+	}	
+}
