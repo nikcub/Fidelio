@@ -11,29 +11,72 @@
 
 (function (document) {
 
-	var Force = {
+	var Fidelio = {
 		
-		sites: ['facebook.com', 'www.facebook.com', 'www.twitter.com', 'twitter.com'],
-
+		siteList: [],
+		
 		debugLevel: false,
 		
+		startTime: false,
+		
 		init: function (options) {
+			
 			if(arguments.length > 0 && options instanceof Object) {
 				this.debugLevel = options.debug;
 			}
 			
-			if((this.sites.indexOf(document.domain) > 0) && document.location.protocol != 'https:') {
-				document.location = 'https://' + document.location.hostname + document.location.pathname + document.location.hash;
-			}
+			this.chromeSender('getSiteList', null, this.getSiteList);
+			
+			
 		},
 
+		onEnable: function(ext) {
+			// console.log(ext);
+		},
+		
+
+		getSiteList: function(data) {
+			Fidelio.siteList = data;
+			if(window == window.top)
+				Fidelio.checkSite();
+		},
+		
+		checkSite: function() {
+			if(this.siteList.length < 1)
+				return false;
+			
+			if(document.location.protocol != 'https:' && this.siteMatch(document.domain)) {
+				document.location = 'https://' + document.location.hostname + document.location.pathname + document.location.hash;
+			}	
+		},
+		
 		chromeSender: function(rec, msg, cb) {
 			msg = msg || "";
 			cb = (typeof cb == 'undefined') ? function(x){return x;} : cb;
 			chrome.extension.sendRequest({rec: rec, msg: msg}, cb);
 		},
 		
-		get_host: function (url) {
+		siteMatch: function(hostname) {
+			for(site in this.siteList) {
+				if(!this.hostMatch(this.siteList[site], hostname))
+					return true;
+			}
+			return false;
+		},
+		
+		hostMatch: function(src1, src2) {
+			var url1 = this.reverseString(src1);
+			var url2 = this.reverseString(src2);
+			var sub = (url1.length < url2.length) ? url1 : url2;
+			
+			return (url1.substr(0, sub.length) != url2.substr(0, sub.length));
+		},
+		
+		reverseString: function (str) {
+			return str.split('').reverse().join('');
+		},
+		
+		getHost: function (url) {
 			var re = new RegExp('^(?:f|ht)tp(?:s)?\://([^/]+)', 'im');
 			return url.match(re)[1].toString().toLowerCase();
 		},
@@ -41,7 +84,7 @@
 		getStorage: function (key) {
 			var result = localStorage[key];
 			if(typeof(result) == "undefined")
-				return ['___z'];
+				return [];
 			else
 				return JSON.parse(result);
 		},
@@ -54,14 +97,26 @@
 			if(this.debug) {
 				console.log(message);
 			}
+		},
+		
+		logTime: function Timer() {
+		  this.start_ = new Date();
+
+		  this.elapsed = function() {
+		    return (new Date()) - this.start_;
+		  }
+
+		  this.reset = function() {
+		    this.start_ = new Date();
+		  }
 		}
 	};
 	
-	Force.init.prototype = Force;
+	Fidelio.init.prototype = Fidelio;
 	
 	try {
 		var options = { debug: true };
-		Force = window.Force = new Force.init(options);
+		Fidelio = window.Fidelio = new Fidelio.init(options);
 	} catch(Error) {
 		console.error('Error: ' + arguments[0] + ' ' + Error.message);
 		console.error(Error.stack);

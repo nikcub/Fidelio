@@ -1,15 +1,29 @@
-Forces SSL for Twitter and Facebook
+# Fidelio
 
-I will add an options page later today, or whenever, so you can force other sites to also use SSL
+Forces secure connections and secure cookies on sites specified by the user in the options page.
 
-If you install the plugin now, it will auto-update with whatever I add to it.
+By default twitter.com and facebook.com are enabled.
+
+The method used means that there is no cookie leak in the initial HTTP request, since cookies are re-written with the secure flag set.
+
+This means that when you first enable the extension, on some sites you will need to re-login.
+
+## Install
 
 Click here to install for Chrome:
 
-http://nikcub.appspot.com/projects/forcessl.crx
+http://nikcub.appspot.com/projects/fidelio.crx
 
-Source code here:
+## Issues
 
-http://github.com/nikcub/forcessl
+Please log issues you find at:
 
-I am not very consistant with apostrophe's 
+[http://github.com/nikcub/fidelio/issues](http://github.com/nikcub/fidelio/issues)
+
+or email me on nikcub at gmail.com
+
+## Source
+
+Source code for the project is on GitHub:
+
+[http://github.com/nikcub/fidelio](http://github.com/nikcub/fidelio)
