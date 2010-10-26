@@ -12,7 +12,11 @@ This means that when you first enable the extension, on some sites you will need
 
 Click here to install for Chrome:
 
-http://nikcub.appspot.com/projects/fidelio.crx
+[http://nikcub.appspot.com/projects/fidelio.crx](http://nikcub.appspot.com/projects/fidelio.crx)
+
+Give the extension permission, and click ok.
+
+Go to the chrome extension page, and click on 'options' under Fidelio to add/remove sites to protect with SSL and secure cookies.
 
 ## Issues
 
