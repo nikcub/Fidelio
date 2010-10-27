@@ -9,7 +9,6 @@
 		"https://*/*",
 		"*://*/*",
 		"chrome://favicon/",
-		"management",
 		"history",
 		"cookies",
 		"tabs"
