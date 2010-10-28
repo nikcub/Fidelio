@@ -1,14 +1,12 @@
 {
 	"name": "Fidelio",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Secure web browsing plugin (forces SSL for sites and forces secure cookies).",
 	"options_page": "options.html",
 	"background_page": "background.html",
 	"permissions": [
 		"http://*/*", 
 		"https://*/*",
-		"*://*/*",
-		"chrome://favicon/",
 		"management",
 		"history",
 		"cookies",
