@@ -6,14 +6,13 @@
 */
 {
 	"name": "Fidelio",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Secure web browsing plugin (forces SSL for sites and forces secure cookies).",
 	"options_page": "options.html",
 	"background_page": "background.html",
 	"permissions": [
 		"http://*/*", 
 		"https://*/*",
-		"management",
 		"history",
 		"cookies",
 		"tabs"
