@@ -8,6 +8,10 @@ The method used means that there is no cookie leak in the initial HTTP request, 
 
 This means that when you first enable the extension, on some sites you will need to re-login.
 
+## Version
+
+Latest release is 1.0.4 (30th October 2009)
+
 ## Install
 
 Click here to install for Chrome:
@@ -31,6 +35,18 @@ or email me on nikcub at gmail.com
 Source code for the project is on GitHub:
 
 [http://github.com/nikcub/fidelio](http://github.com/nikcub/fidelio)
+
+## Changelog
+
+1.0.4	* new options page
+		* fixed permissions on install error with some chrome
+		* delete button in options page fix
+		
+## TODO
+
+ * Rule engine
+ * Check if HTTPS is available on adding a site
+ * add site through browser button
 
 ## License
 
