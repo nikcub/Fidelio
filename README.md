@@ -38,7 +38,7 @@ Source code for the project is on GitHub:
 
 ## Changelog
 
-1.0.4	* new options page
+1.0.3	* new options page
 		* fixed permissions on install error with some chrome
 		* delete button in options page fix
 		
