@@ -1,15 +1,144 @@
 <html>
 <head>
+<!--
+Copyright 2010 Nik Cubrilovic <nikcub@gmail.com>. All Rights Reserved.
+
+Use of this source code is governed by an BSD 3-clause License.
+See LICENSE for details.
+-->
 <style>
+html,
+body {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background: #fff;
+	font-size: 100%;
+}
+body {
+	font-family: "Helvetica Neue", Helvetica, "Arial Unicode MS", sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	font-weight: normal;
+}
+
+#wrap {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#header {
+	padding: 5px 10px;
+	height: 4em;
+	border-bottom: 1px solid #ff6600;
+	margin-bottom: 5px;
+}
+
+#nav { 
+	padding: 5px 10px;
+}
+
+#column-one {
+/*	background:#9c9;*/
+	float: left;
+	width: 380px;
+	padding: 5px 10px 5px 10px;
+}
+
+#column-two {
+/*	background:#c9c;*/
+	float: right;
+	width: 380px;
+	padding: 5px 10px 5px 10px;
+}
+
+#footer {
+	clear: both;
+	border-top: 1px solid #ff6600;
+	padding: 5px 10px;
+}
+
+/* page styles */
+
+#header img {
+	float: left;
+	margin-right: 10px;
+	line-height: 2em;
+}
+
+#header h1 {
+	float: left;
+	margin: 0;
+	font-size: 1.5em;
+	line-height: 2.66667em;
+}
+
+#nav ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#nav li {
+	display:inline;
+	margin:0;
+	padding:0;
+}
+
+#footer p {
+	margin: 0;
+	text-align: center;
+	width: 100%;
+}
+
+#add_div h3 {
+	border-bottom: 10px;
+}
+
+#add_div {
+	border-bottom: 20px;
+}
+
+#sitelist_div {
+	margin-top: 25px;
+}
+
+h2 {
+	margin: 0 0 1em;
+}
+
 table {
-  border-collapse:collapse;
+	border-collapse: collapse;
+	width: 100%;
+	cellpadding: 0;
+	cellspacing: 0;
+	border: 0;
+}
+
+label {
+	width: 50%;
+	text-align: right;
+	margin-right: 10px;
+}
+
+input {
+	width: 50%;
+}
+
+table > thead > tr {
+	font-weight: bold;
+	
 }
 
 td {
-  border: 1px solid black;
-  padding-left: 5px;
+	border: none;
+	padding-left: 5px;
+	text-align: left;
 }
 
+td.cookie_count {
+	color: red;
+}
 td.button {
   border: none;
 }
@@ -17,31 +146,78 @@ td.button {
 td.cookie_count {
   text-align: right;
 }
+
+/* IE6 */
+
+* html #footer {
+	height:1px;
+}
+
 </style>
 <script src="options.js"></script>
 </head>
 <body onload="onload()" onclick="focusInput()">
-<h2>Fidelio Options</h2>
 <div id="wrap">
-	<div id="add_div">
-		Add site: <input id="addSite" type="text" oninput="autoComplete()" onkeypress="addSiteKey()">
-		<button onclick="evAddSite()">Add</button><div id="addStatus"></div>
+	<div id="header">
+		<img src="img/forcessl-48.png">
+		<h1>Fidelio Options</h1>
+		<p><i>version 1.0.4</i></p>
 	</div>
+	<!-- <div id="nav">
+		<ul>
+			<li><a href="#">option</a></li>
+			<li><a href="#">home</a></li>
+			<li><a href="#">code</a></li>
+		</ul>
+	</div> -->
+	<div id="column-one">
+		
+		<div id="add_div">
+			<h3><span id="sitelist_count"></span>Protected sites</h3>
+			<label for="addSite">Add: </label><input id="addSite" type="text" oninput="autoComplete()" onkeypress="addSiteKey()">
+			<button onclick="evAddSite()">Add</button><div id="addStatus"></div>
+		</div>
 
-	<div id="summary_div">
-		Showing <span id="sitelist_count"></span> protected sites.
+		<div id="sitelist_div">
+			<table id="siteList">
+				<thead>
+					<tr class="header">
+					<td>Site</td>
+					<td width="50px">Cookies</td>
+					<td width="50px"></td>
+					</tr>
+				</thead>
+				<tbody id="siteListBody">
+					
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
-	<div id="sitelist_div">
-		<table id="siteList">
-			<thead>
-				<tr class="header">
-				<td>Site</td>
-				<td>Cookies</td>
-				<td></td>
-				</tr>
-			</thead>
-		</table>
+	<div id="column-two">
+		<h3>About</h3>
+		<p>Protects your user accounts by forcing secure connections to chosen sites, and by re-written your cookies so that the secure flag is set.</p>
+		<p>Homepage: <a href="http://nikcub.appspot.com/projects">http://nikcub.appspot.com/projects</a></p>
+		
+		<h3>Issues</h3>
+		<p>Found a bug? Have a feature you would like to see? Log an issue at GitHub:</p>
+		<p><a href="http://github.com/nikcub/Fidelio/issues" taret="_new">http://github.com/nikcub/Fidelio/issues</a></p>
+		
+		<h3>Features and Feedback</h3>
+		<p>Any feature requests or feedback email <a href="mailto:nikcub@gmail.com">nikcub@gmail.com</a></p>
+		
+		<h3>TODO</h3>
+		<p>Coming in v1.0.5</p>
+		<ul>
+			<li>Rule engine for site-specific rewrites</p>
+			<li>Check if HTTPS avaiable on site add</p>
+			<li>Refine options page (this page)</p>
+		</ul>
+		<p>and later, add button on browser to add sites, etc.</p>
+		<p>Other: <a href="http://github.com/nikcub/parley">Parley</a> is being released in the coming days - a privacy plugin</p>
+		
+	</div>
+	<div id="footer">
+		<p>&copy; 2010 <a href="http://nikcub.appspot.com">Nik Cubrilovic</a> | LICENSE</p>
 	</div>
 </div>
 </body>
