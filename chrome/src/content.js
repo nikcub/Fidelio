@@ -1,12 +1,8 @@
 /*
- Force-SSL
+	Copyright 2010 Nik Cubrilovic [http://nikcub.appspot.com]. All Rights Reserved.
 
- Copyright 2010 	Nik Cubrilovic <nikcub@gmail.com>
-			http://nikcub.appspot.com/
-
- BSD licensed.
-
- Forces SSL requests for certain sites for more security etc.
+	Use of this source code is governed by a 3-clause BSD license.
+	See the LICENSE file for details.
 */
 
 (function (document) {
