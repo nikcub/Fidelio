@@ -31,3 +31,10 @@ or email me on nikcub at gmail.com
 Source code for the project is on GitHub:
 
 [http://github.com/nikcub/fidelio](http://github.com/nikcub/fidelio)
+
+## License
+
+Copyright 2010 Nik Cubrilovic [http://nikcub.appspot.com]. All Rights Reserved.
+
+Use of this source code is governed by a 3-clause BSD license.
+See the LICENSE file for details.
