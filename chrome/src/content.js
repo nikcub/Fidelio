@@ -42,7 +42,7 @@
 				return false;
 			
 			if(document.location.protocol != 'https:' && this.siteMatch(document.domain)) {
-				document.location = 'https://' + document.location.hostname + document.location.pathname + document.location.hash;
+				document.location = 'https://' + document.location.hostname + document.location.pathname + document.location.search + document.location.hash;
 			}	
 		},
 		
